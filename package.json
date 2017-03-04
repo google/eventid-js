@@ -1,0 +1,34 @@
+{
+  "name": "eventid",
+  "version": "0.0.1",
+  "description": "A utility for generating monotonically increasing unique event ids across a network of services.",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/test.js",
+    "lint": "jshint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/google/eventid-js.git"
+  },
+  "keywords": [
+    "uid"
+  ],
+  "author": "Google Inc.",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/google/eventid-js/issues"
+  },
+  "homepage": "https://github.com/google/eventid-js#readme",
+  "dependencies": {
+    "d64": "^1.0.0",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.4",
+    "mocha": "^3.2.0"
+  }
+}

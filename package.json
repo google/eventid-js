@@ -1,6 +1,6 @@
 {
   "name": "eventid",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A utility for generating monotonically increasing unique event ids across a network of services.",
   "main": "lib/index.js",
   "directories": {

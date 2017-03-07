@@ -33,8 +33,8 @@ describe('eventid', function() {
   // Ensure our writes have the correct endianness
   it('should preserve monotonicity across byte boundary', function() {
     var eid = new EventId();
-    // Want to cross byte boundary at 255
-    eid.b.writeUInt32BE(250, 4);
+    // Want to cross byte boundary at 255.
+    eid.b[7] = 250;
     var previous = eid.new();
     for (var i = 0; i < 20; i++) {
       var current = eid.new();
@@ -46,8 +46,11 @@ describe('eventid', function() {
   // Ensure we transition between low and high bits of counter correctly
   it('should preserve monotonicity across word boundary', function() {
     var eid = new EventId();
-    // Want to cross word boundary at 0xFFFFFFFF
-    eid.b.writeUInt32BE(0xFFFFFFF8, 4);
+    // Want to cross word boundary at 0xFFFFFFFF.
+    eid.b[4] = 0xff;
+    eid.b[5] = 0xff;
+    eid.b[6] = 0xff;
+    eid.b[7] = 0xf8;
     var previous = eid.new();
     for (var i = 0; i < 20; i++) {
       var current = eid.new();

@@ -1,5 +1,7 @@
 # Monotonically increasing per machine, globally unique eventids
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/google/eventid-js.svg)](https://greenkeeper.io/)
+
 [![CircleCI][circle-image]][circle-url]
 [![Dependencies][david-image]][david-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]

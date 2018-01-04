@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "mocha test/test.js",
-    "lint": "jshint ."
+    "posttest": "npm run license-check",
+    "lint": "jshint .",
+    "license-check": "jsgl --local ."
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "js-green-licenses": "^0.2.0",
     "jshint": "^2.9.4",
     "mocha": "^4.0.1"
   }

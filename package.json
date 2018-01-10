@@ -30,7 +30,7 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "js-green-licenses": "^0.2.0",
+    "js-green-licenses": "^0.3.0",
     "jshint": "^2.9.4",
     "mocha": "^4.0.1"
   }

@@ -21,10 +21,10 @@ workflows:
       - node9
       - publish_npm:
           requires:
-            - node4
             - node6
             - node8
-            - node9
+            - node10
+            - node11
           filters:
             branches:
               ignore: /.*/
@@ -48,10 +48,18 @@ jobs:
     docker:
       - image: node:9
     <<: *unit_tests
+  node10:
+    docker:
+      - image: node:10
+    <<: *unit_tests
+  node11:
+    docker:
+      - image: node:11
+    <<: *unit_tests
 
   publish_npm:
     docker:
-      - image: node:8
+      - image: node:10
     steps:
       - checkout
       - run:

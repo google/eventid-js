@@ -19,6 +19,8 @@ workflows:
       - node6
       - node8
       - node9
+      - node10
+      - node11
       - publish_npm:
           requires:
             - node6

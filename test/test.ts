@@ -14,48 +14,53 @@
  * limitations under the License.
  */
 
-'use strict';
+import * as assert from 'assert';
+import {EventId} from '../src';
 
-var assert = require('assert');
-var EventId = require('..');
-
-describe('eventid', function() {
-  it('should generate monotonically increasing numbers', function() {
-    var eid = new EventId();
-    var previous = eid.new();
-    for (var i = 0; i < 20; i++) {
-      var current = eid.new();
+describe('eventid', () => {
+  it('should generate monotonically increasing numbers', () => {
+    const eid = new EventId();
+    let previous = eid.new();
+    for (let i = 0; i < 20; i++) {
+      const current = eid.new();
       assert.ok(current > previous, 'Failed on iteration: ' + i);
       previous = current;
     }
   });
 
   // Ensure our writes have the correct endianness
-  it('should preserve monotonicity across byte boundary', function() {
-    var eid = new EventId();
+  it('should preserve monotonicity across byte boundary', () => {
+    const eid = new EventId();
     // Want to cross byte boundary at 255.
     eid.b[7] = 250;
-    var previous = eid.new();
-    for (var i = 0; i < 20; i++) {
-      var current = eid.new();
+    let previous = eid.new();
+    for (let i = 0; i < 20; i++) {
+      const current = eid.new();
       assert.ok(current > previous, 'Failed on iteration: ' + i);
       previous = current;
     }
   });
 
   // Ensure we transition between low and high bits of counter correctly
-  it('should preserve monotonicity across word boundary', function() {
-    var eid = new EventId();
+  it('should preserve monotonicity across word boundary', () => {
+    const eid = new EventId();
     // Want to cross word boundary at 0xFFFFFFFF.
     eid.b[4] = 0xff;
     eid.b[5] = 0xff;
     eid.b[6] = 0xff;
     eid.b[7] = 0xf8;
-    var previous = eid.new();
-    for (var i = 0; i < 20; i++) {
-      var current = eid.new();
+    let previous = eid.new();
+    for (let i = 0; i < 20; i++) {
+      const current = eid.new();
       assert.ok(current > previous, 'Failed on iteration: ' + i);
       previous = current;
     }
+  });
+
+  it('should allow non destructed import', () => {
+    // tslint:disable-next-line variable-name
+    const EventId = require('../src');
+    const eid = new EventId();
+    const v = eid.new();
   });
 });

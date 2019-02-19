@@ -2,15 +2,21 @@
   "name": "eventid",
   "version": "0.1.2",
   "description": "A utility for generating monotonically increasing unique event ids across a network of services.",
-  "main": "lib/index.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "build/src/index.js",
+  "types": "build/src/index.d.ts",
+  "files": [
+    "build/src"
+  ],
   "scripts": {
-    "test": "mocha test/test.js",
-    "posttest": "npm run license-check",
-    "lint": "jshint .",
-    "license-check": "jsgl --local ."
+    "test": "nyc mocha build/test",
+    "posttest": "gts check && npm run license-check",
+    "lint": "gts check",
+    "license-check": "jsgl --local .",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -30,9 +36,13 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "@types/mocha": "^5.2.6",
+    "@types/uuid": "^3.4.4",
+    "gts": "^0.9.0",
     "js-green-licenses": "^0.5.0",
-    "jshint": "^2.9.4",
-    "mocha": "^6.0.0"
+    "mocha": "^6.0.0",
+    "nyc": "^13.3.0",
+    "typescript": "~3.1.0"
   },
   "engines": {
     "node": ">=6"

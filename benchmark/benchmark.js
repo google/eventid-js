@@ -16,10 +16,8 @@
 
 'use strict';
 
-var EventId = require('..');
-
-var eid = new EventId();
-
+const EventId = require('../src');
+const eid = new EventId();
 for (var i = 0; i < 1e7; i++) {
   eid.new();
 }

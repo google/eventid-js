@@ -14,25 +14,29 @@
  * limitations under the License.
  */
 
-'use strict';
+const d64 = require('d64');
+import * as uuid from 'uuid';
 
-var d64 = require('d64');
-var uuid = require('uuid');
+export class EventId {
+  b: Uint8Array;
+  constructor() {
+    this.b = new Uint8Array(24);
+    uuid.v4(null, this.b, 8);
+  }
 
-function EventId() {
-  this.b = new Uint8Array(24);
-  uuid.v4(null, this.b, 8);
+  new() {
+    for (let i = 7; i >= 0; i--) {
+      if (this.b[i] !== 255) {
+        this.b[i]++;
+        break;
+      }
+      this.b[i] = 0;
+    }
+    return d64.encode(this.b);
+  }
 }
 
-EventId.prototype.new = function() {
-  for (var i = 7; i >= 0; i--) {
-    if (this.b[i] !== 255) {
-      this.b[i]++;
-      break;
-    }
-    this.b[i] = 0;
-  }
-  return d64.encode(this.b);
-};
-
+// preserve `const EventId = require('EventId')` syntax
+const existingExports = module.exports;
 module.exports = EventId;
+module.exports = Object.assign(module.exports, existingExports);

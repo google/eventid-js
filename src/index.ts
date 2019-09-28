@@ -15,13 +15,13 @@
  */
 
 const d64 = require('d64');
-import * as uuid from 'uuid';
+const uuid = require('uuid/v4');
 
 export class EventId {
   b: Uint8Array;
   constructor() {
     this.b = new Uint8Array(24);
-    uuid.v4(null, this.b, 8);
+    uuid(null, this.b, 8);
   }
 
   new() {

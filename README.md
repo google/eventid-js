@@ -1,4 +1,5 @@
-# Monotonically increasing per machine, globally unique eventids
+# eventid
+> Monotonically increasing per machine, globally unique eventids
 
 [![npm version](https://img.shields.io/npm/v/eventid.svg)](https://www.npmjs.org/package/eventid)
 [![Build Status](https://circleci.com/gh/google/eventid-js.svg?style=shield)](https://circleci.com/gh/google/eventid-js)
@@ -19,7 +20,7 @@ monotonically increasing local ids.
 ## Installation
 
 ```sh
-$ npm install linkinator
+$ npm install eventid
 ```
 
 ## Usage

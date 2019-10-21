@@ -8,11 +8,11 @@
     "build/src"
   ],
   "scripts": {
-    "test": "nyc mocha build/test",
-    "posttest": "gts check && npm run license-check",
+    "test": "c8 mocha build/test",
     "lint": "gts check",
     "license-check": "jsgl --local .",
     "clean": "gts clean",
+    "codecov": "c8 report --reporter=json && codecov -f coverage/*.json",
     "compile": "tsc -p .",
     "fix": "gts fix",
     "prepare": "npm run compile",
@@ -38,10 +38,11 @@
   "devDependencies": {
     "@types/mocha": "^5.2.6",
     "@types/uuid": "^3.4.4",
+    "c8": "^5.0.4",
+    "codecov": "^3.6.1",
     "gts": "^1.0.0",
     "js-green-licenses": "^1.0.0",
     "mocha": "^6.0.0",
-    "nyc": "^14.0.0",
     "typescript": "~3.6.0"
   },
   "engines": {

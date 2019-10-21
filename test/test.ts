@@ -15,7 +15,7 @@
  */
 
 import * as assert from 'assert';
-import { EventId } from '../src';
+import {EventId} from '../src';
 
 describe('eventid', () => {
   it('should generate monotonically increasing numbers', () => {

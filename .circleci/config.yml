@@ -1,56 +1,94 @@
 ---
+release_tags: &release_tags
+  tags:
+    only: /^v\d+(\.\d+){2}(-.*)?$/
+
 # "Include" for unit tests definition.
 unit_tests: &unit_tests
   steps:
     - checkout
-    - run:
-        name: Install modules and dependencies.
-        command: npm install
-    - run:
-        name: Run unit tests.
-        command: npm test
+    - run: npm install
+    - run: npm test
 
 version: 2.0
 workflows:
   version: 2
   tests:
     jobs:
-      - node8
-      - node10
-      - node11
+      - node8:
+          filters: *release_tags
+      - node10:
+          filters: *release_tags
+      - node12:
+          filters: *release_tags
+      - lint:
+          filters: *release_tags
+      - lic:
+          filters: *release_tags
+      - codecov:
+          filters: *release_tags
       - publish_npm:
           requires:
             - node8
             - node10
-            - node11
+            - node12
+            - codecov
+            - lic
+            - lint
           filters:
             branches:
               ignore: /.*/
-            tags:
-              only: /^v[\d.]+$/
+            <<: *release_tags
 
 jobs:
   node8:
     docker:
       - image: node:8
+        user: node
     <<: *unit_tests
   node10:
     docker:
       - image: node:10
+        user: node
     <<: *unit_tests
-  node11:
+  node12:
     docker:
-      - image: node:11
+      - image: node:12
+        user: node
     <<: *unit_tests
+  codecov:
+    docker:
+      - image: node:12
+        user: node
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+      - run: npm run codecov
+  lic:
+    docker:
+      - image: node:12
+        user: node
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run license-check
+  lint:
+    docker:
+      - image: node:12
+        user: node
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run check
 
   publish_npm:
     docker:
       - image: node:10
+        user: node
     steps:
       - checkout
-      - run:
-          name: Set NPM authentication.
-          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-      - run:
-         name: Publish the module to npm.
-         command: npm publish
+      - run: npm ci
+      - run: npm run compile
+      - run: echo "//wombat-dressing-room.appspot.com/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+      - run: npm publish --registry https://wombat-dressing-room.appspot.com/

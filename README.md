@@ -1,10 +1,9 @@
 # Monotonically increasing per machine, globally unique eventids
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/google/eventid-js.svg)](https://greenkeeper.io/)
-
-[![CircleCI][circle-image]][circle-url]
-[![Dependencies][david-image]][david-url]
-[![Known Vulnerabilities][snyk-image]][snyk-url]
+[![npm version](https://img.shields.io/npm/v/eventid.svg)](https://www.npmjs.org/package/eventid)
+[![Build Status](https://circleci.com/gh/google/eventid-js.svg?style=shield)](https://circleci.com/gh/google/eventid-js)
+[![Dependencies](https://david-dm.org/google/eventid-js.svg)](https://david-dm.org/google/eventid-js)
+[![Known Vulnerabilities](https://snyk.io/test/github/google/eventid-js/badge.svg)](https://snyk.io/test/github/google/eventid-js)
 
 ***Note: This is not an official Google product.***
 
@@ -15,6 +14,15 @@ useful for lexically comparable identifiers for events in a distributed system.
 This can be used instead of timestamps – JavaScript timestamps only have
 millisecond resolution making them unsuitable for the purpose of building
 monotonically increasing local ids.
+
+
+## Installation
+
+```sh
+$ npm install linkinator
+```
+
+## Usage
 
 ```js
 const EventId = require('eventid');
@@ -34,9 +42,6 @@ const another = new EventId();
 const id3 = another.new(); // -> "..........5rkLYOc5W8ZAHAmVSyrixJ"
 ```
 
-[circle-image]: https://circleci.com/gh/google/eventid-js.svg?style=svg
-[circle-url]: https://circleci.com/gh/google/eventid-js
-[david-image]: https://david-dm.org/google/eventid-js.svg
-[david-url]: https://david-dm.org/google/eventid-js
-[snyk-image]: https://snyk.io/test/github/google/eventid-js/badge.svg
-[snyk-url]: https://snyk.io/test/github/google/eventid-js
+## License
+
+[Apache 2.0](LICENSE)

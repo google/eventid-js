@@ -43,7 +43,7 @@
     "gts": "^1.0.0",
     "js-green-licenses": "^1.0.0",
     "mocha": "^7.0.0",
-    "typescript": "~3.7.0"
+    "typescript": "~3.8.0"
   },
   "engines": {
     "node": ">=8"

@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@types/mocha": "^7.0.0",
+    "@types/node": "^13.7.4",
     "@types/uuid": "^3.4.4",
     "c8": "^7.0.0",
     "codecov": "^3.6.1",

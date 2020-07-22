@@ -1,6 +1,6 @@
 {
   "name": "eventid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A utility for generating monotonically increasing unique event ids across a network of services.",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",

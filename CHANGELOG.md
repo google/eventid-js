@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/google/eventid-js/compare/v1.0.0...v1.0.1) (2020-07-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency uuid to v7 ([#79](https://www.github.com/google/eventid-js/issues/79)) ([1e8c47f](https://www.github.com/google/eventid-js/commit/1e8c47f982ecadad583952847bcc3919d8ca498e))
+
 ## [1.0.0](https://www.github.com/google/eventid-js/compare/v0.1.2...v1.0.0) (2019-11-05)
 
 

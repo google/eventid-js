@@ -15,7 +15,8 @@
  */
 
 import * as assert from 'assert';
-import { EventId } from '../src';
+import {describe, it} from 'mocha';
+import {EventId} from '../src';
 
 describe('eventid', () => {
   it('should generate monotonically increasing numbers', () => {
@@ -58,9 +59,9 @@ describe('eventid', () => {
   });
 
   it('should allow non destructed import', () => {
-    // tslint:disable-next-line variable-name
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const EventId = require('../src');
     const eid = new EventId();
-    const v = eid.new();
+    eid.new();
   });
 });

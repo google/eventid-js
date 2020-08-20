@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const d64 = require('d64');
 import * as uuid from 'uuid';
 

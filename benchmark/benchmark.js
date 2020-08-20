@@ -16,8 +16,9 @@
 
 'use strict';
 
+// eslint-disable-next-line node/no-missing-require
 const EventId = require('../src');
 const eid = new EventId();
-for (var i = 0; i < 1e7; i++) {
+for (let i = 0; i < 1e7; i++) {
   eid.new();
 }

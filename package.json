@@ -36,13 +36,13 @@
     "uuid": "^7.0.0"
   },
   "devDependencies": {
-    "@types/mocha": "^7.0.0",
+    "@types/mocha": "^8.0.0",
     "@types/node": "^13.7.4",
     "@types/uuid": "^3.4.4",
     "c8": "^7.3.0",
     "gts": "^2.0.0",
     "js-green-licenses": "^2.0.0",
-    "mocha": "^7.0.0",
+    "mocha": "^8.0.0",
     "typescript": "^4.0.0"
   },
   "engines": {

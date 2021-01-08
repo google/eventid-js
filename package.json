@@ -12,7 +12,6 @@
     "lint": "gts check",
     "license-check": "jsgl --local .",
     "clean": "gts clean",
-    "codecov": "c8 report --reporter=json && codecov -f coverage/*.json",
     "compile": "tsc -p .",
     "fix": "gts fix",
     "prepare": "npm run compile",

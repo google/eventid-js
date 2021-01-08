@@ -7,7 +7,8 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: GoogleCloudPlatform/release-please-action@v2
+      - name: release
+        uses: GoogleCloudPlatform/release-please-action@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
@@ -15,15 +16,15 @@ jobs:
       - uses: actions/checkout@v2
         if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v1
+        if: ${{ steps.release.outputs.release_created }}
         with:
           node-version: 14
           registry-url: 'https://wombat-dressing-room.appspot.com'
-        if: ${{ steps.release.outputs.release_created }}
       - run: npm ci
         if: ${{ steps.release.outputs.release_created }}
       - run: npm run compile
         if: ${{ steps.release.outputs.release_created }}
       - run: npm publish
+        if: ${{ steps.release.outputs.release_created }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          if: ${{ steps.release.outputs.release_created }}

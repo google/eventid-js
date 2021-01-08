@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.0](https://www.github.com/google/eventid-js/compare/v1.0.0...v2.0.0) (2021-01-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* require node.js 10 and up (#88)
+
+### Bug Fixes
+
+* **deps:** update dependency uuid to v7 ([#79](https://www.github.com/google/eventid-js/issues/79)) ([1e8c47f](https://www.github.com/google/eventid-js/commit/1e8c47f982ecadad583952847bcc3919d8ca498e))
+* **deps:** update dependency uuid to v8 ([#92](https://www.github.com/google/eventid-js/issues/92)) ([0a5ecea](https://www.github.com/google/eventid-js/commit/0a5eceae8dca5ae751fbee7dc0c3822e707af826))
+
+
+### Build System
+
+* require node.js 10 and up ([#88](https://www.github.com/google/eventid-js/issues/88)) ([c0cea90](https://www.github.com/google/eventid-js/commit/c0cea904922fc8e34a13ace7777cca54e6cff30a))
+
 ## [1.0.0](https://www.github.com/google/eventid-js/compare/v0.1.2...v1.0.0) (2019-11-05)
 
 

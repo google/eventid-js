@@ -10,7 +10,7 @@ jobs:
       - id: release
         uses: GoogleCloudPlatform/release-please-action@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.YOSHI_AUTOMATION_TOKEN }}
           release-type: node
           package-name: eventid
       - uses: actions/checkout@v2

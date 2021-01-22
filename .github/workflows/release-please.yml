@@ -4,27 +4,73 @@ on:
       - master
 name: release-please
 jobs:
-  release-please:
+  release-please-pr:
     runs-on: ubuntu-latest
     steps:
-      - id: release
+      - id: release-pr
         uses: GoogleCloudPlatform/release-please-action@v2
         with:
           token: ${{ secrets.YOSHI_AUTOMATION_TOKEN }}
           release-type: node
           package-name: eventid
+          fork: true
+          command: release-pr
+      - id: label # Add the magic "autorelease: pending" label.
+        uses: actions/github-script@v3
+        if: ${{ steps.release-pr.outputs.pr }}
+        with:
+            github-token: ${{secrets.GITHUB_TOKEN}}
+            script: |
+              const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
+              await github.issues.addLabels({
+                owner,
+                repo,
+                issue_number: ${{steps.release-pr.outputs.pr}},
+                labels: ['autorelease: pending']
+              });
+              console.log(`Tagged ${{steps.release-pr.outputs.pr}}`)
+  release-please-release:
+    runs-on: ubuntu-latest
+    steps:
+      - id: tag-release
+        uses: GoogleCloudPlatform/release-please-action@v2
+        with:
+          token: ${{ secrets.YOSHI_AUTOMATION_TOKEN }}
+          release-type: node
+          package-name: eventid
+          command: github-release     
       - uses: actions/checkout@v2
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.tag-release.outputs.release_created }}
       - uses: actions/setup-node@v1
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.tag-release.outputs.release_created }}
         with:
           node-version: 14
           registry-url: 'https://wombat-dressing-room.appspot.com'
       - run: npm ci
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.tag-release.outputs.release_created }}
       - run: npm run compile
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.tag-release.outputs.release_created }}
       - run: npm publish
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.tag-release.outputs.release_created }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - uses: actions/github-script@v3
+        id: add-publish-label
+        if: ${{steps.tag-release.outputs.pr}}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
+            await github.issues.addLabels({
+              owner,
+              repo,
+              issue_number: ${{steps.tag-release.outputs.pr}},
+              labels: ['autorelease: published']
+            });
+            github.issues.removeLabel({
+              owner,
+              repo,
+              issue_number: ${{steps.tag-release.outputs.pr}},
+              name: 'autorelease: tagged',
+            });
+            console.log(`Tagged ${{steps.tag-release.outputs.pr}}`)

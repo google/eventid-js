@@ -2,7 +2,7 @@
 > Monotonically increasing per machine, globally unique eventids
 
 [![npm version](https://img.shields.io/npm/v/eventid.svg)](https://www.npmjs.org/package/eventid)
-[![Build Status](https://circleci.com/gh/google/eventid-js.svg?style=shield)](https://circleci.com/gh/google/eventid-js)
+[![Build Status](https://github.com/google/eventid-js/workflows/ci/badge.svg)](https://github.com/google/eventid-js/actions)
 [![Dependencies](https://david-dm.org/google/eventid-js.svg)](https://david-dm.org/google/eventid-js)
 [![Known Vulnerabilities](https://snyk.io/test/github/google/eventid-js/badge.svg)](https://snyk.io/test/github/google/eventid-js)
 

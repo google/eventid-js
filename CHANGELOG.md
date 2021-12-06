@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.0.1](https://www.github.com/google/eventid-js/compare/v2.0.0...v2.0.1) (2021-12-06)
+
+
+### Bug Fixes
+
+* **deps:** remove dependency on d64 ([#161](https://www.github.com/google/eventid-js/issues/161)) ([58753da](https://www.github.com/google/eventid-js/commit/58753da30cb4443395c4436ac95471ca2d2de6aa))
+
 ## [2.0.0](https://www.github.com/google/eventid-js/compare/v1.0.0...v2.0.0) (2021-08-31)
 
 

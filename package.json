@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/google/eventid-js#readme",
   "dependencies": {
-    "d64": "^1.0.0",
     "uuid": "^8.0.0"
   },
   "devDependencies": {

@@ -31,12 +31,12 @@
   },
   "homepage": "https://github.com/google/eventid-js#readme",
   "dependencies": {
-    "uuid": "^8.0.0"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.0.0",
-    "@types/uuid": "^8.0.0",
+    "@types/uuid": "^9.0.0",
     "c8": "^7.3.0",
     "gts": "^3.0.0",
     "js-green-licenses": "^3.0.0",
